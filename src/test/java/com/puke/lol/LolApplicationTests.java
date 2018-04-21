@@ -1,6 +1,5 @@
 package com.puke.lol;
 
-import com.puke.lol.base.Page;
 import com.puke.lol.entity.Hero;
 import com.puke.lol.mapper.HeroMapper;
 import com.puke.lol.mapper.SkillMapper;
@@ -28,7 +27,7 @@ public class LolApplicationTests {
     @Test
     public void testFindAllHeroes() {
         HeroQuery query = new HeroQuery();
-        Page<Hero> list = null;
+        List<Hero> list = null;
         try {
             list = heroService.getList(query);
         } catch (Exception e) {

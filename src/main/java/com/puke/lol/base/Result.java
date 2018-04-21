@@ -3,6 +3,9 @@ package com.puke.lol.base;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import static com.puke.lol.base.Constant.MSG_ERROR;
+import static com.puke.lol.base.Constant.MSG_SUCCESS;
+
 /**
  * @author zijiao
  * @version 18/4/20
@@ -10,9 +13,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Result<T> {
-
-    private static final String MSG_SUCCESS = "SUCCESS";
-    private static final String MSG_ERROR = "ERROR";
 
     private boolean success;
     private String msg;

@@ -1,7 +1,6 @@
 package com.puke.lol.controller;
 
-import com.puke.lol.base.Page;
-import com.puke.lol.base.Result;
+import com.puke.lol.base.PageResult;
 import com.puke.lol.entity.Hero;
 import com.puke.lol.query.HeroQuery;
 import com.puke.lol.service.HeroService;
@@ -22,12 +21,12 @@ public class HeroController {
     private HeroService heroService;
 
     @RequestMapping("/getList")
-    public Result<Page<Hero>> getList(HeroQuery query) {
-        return Result.success(heroService.getList(query));
+    public PageResult<Hero> getList(HeroQuery query) {
+        return PageResult.success(query, heroService.getList(query));
     }
 
     @RequestMapping("/findAll")
-    public Page<Hero> findAll() {
-        return Page.create(heroService.findAll());
+    public PageResult<Hero> findAll() {
+        return PageResult.success(heroService.findAll());
     }
 }

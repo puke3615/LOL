@@ -1,6 +1,5 @@
 package com.puke.lol.service;
 
-import com.puke.lol.base.Page;
 import com.puke.lol.entity.Hero;
 import com.puke.lol.entity.HeroExample;
 import com.puke.lol.mapper.HeroMapper;
@@ -23,15 +22,14 @@ public class HeroService {
     @Resource
     private HeroMapper heroMapper;
 
-    public Page<Hero> getList(HeroQuery query) {
+    public List<Hero> getList(HeroQuery query) {
         HeroExample example = new HeroExample(query);
         HeroExample.Criteria criteria = example.createCriteria();
         addCondition(query.getId(), criteria::andIdEqualTo);
         addCondition(query.getName(), criteria::andNameLike);
         addCondition(query.getNickname(), criteria::andNicknameLike);
         addCondition(query.getType(), criteria::andTypeLike);
-        List<Hero> heroes = heroMapper.selectByExample(example);
-        return Page.create(query, heroes);
+        return heroMapper.selectByExample(example);
     }
 
     private static <T> void addCondition(T param, Consumer<T> consumer) {
