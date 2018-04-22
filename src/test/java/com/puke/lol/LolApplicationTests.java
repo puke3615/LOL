@@ -1,10 +1,10 @@
 package com.puke.lol;
 
-import com.puke.lol.entity.Hero;
 import com.puke.lol.mapper.HeroMapper;
 import com.puke.lol.mapper.SkillMapper;
 import com.puke.lol.query.HeroQuery;
 import com.puke.lol.service.HeroService;
+import com.puke.lol.vo.HeroVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +27,7 @@ public class LolApplicationTests {
     @Test
     public void testFindAllHeroes() {
         HeroQuery query = new HeroQuery();
-        List<Hero> list = null;
+        List<HeroVo> list = null;
         try {
             list = heroService.getList(query);
         } catch (Exception e) {

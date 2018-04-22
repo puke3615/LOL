@@ -19,26 +19,31 @@ public class PageResult<T> {
     private List<T> data;
     private int page = 1;
     private int pageSize = 10;
+    private long totalSize;
+    private boolean isEnd;
 
     public PageResult() {
     }
 
-    public PageResult(List<T> data, int page, int pageSize) {
+    public PageResult(List<T> data, int page, int pageSize, long totalSize) {
         this.data = data;
         this.page = page;
         this.pageSize = pageSize;
         this.success = true;
         this.msg = MSG_SUCCESS;
+        this.totalSize = totalSize;
+        this.isEnd = (page - 1) * pageSize + data.size() >= totalSize;
     }
 
-    public static <T> PageResult<T> success(PageQuery query, List<T> data) {
+    public static <T> PageResult<T> success(PageQuery query, List<T> data, Long totalSize) {
         data = data == null ? Collections.emptyList() : data;
-        return new PageResult<>(data, query.getPage(), query.getPageSize());
+        totalSize = totalSize == null ? data.size() : totalSize;
+        return new PageResult<>(data, query.getPage(), query.getPageSize(), totalSize);
     }
 
     public static <T> PageResult<T> success(List<T> data) {
         data = data == null ? Collections.emptyList() : data;
-        return new PageResult<>(data, 1, data.size());
+        return new PageResult<>(data, 1, data.size(), 0L);
     }
 
     public static <T> PageResult<T> error() {
