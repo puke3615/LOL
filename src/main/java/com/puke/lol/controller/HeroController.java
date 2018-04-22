@@ -25,8 +25,4 @@ public class HeroController {
         return PageResult.success(query, heroService.getList(query));
     }
 
-    @RequestMapping("/findAll")
-    public PageResult<Hero> findAll() {
-        return PageResult.success(heroService.findAll());
-    }
 }

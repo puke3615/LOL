@@ -23,7 +23,8 @@ public class HeroService {
     private HeroMapper heroMapper;
 
     public List<Hero> getList(HeroQuery query) {
-        HeroExample example = new HeroExample(query);
+        HeroExample example = new HeroExample();
+        example.setPageQuery(query);
         HeroExample.Criteria criteria = example.createCriteria();
         addCondition(query.getId(), criteria::andIdEqualTo);
         addCondition(query.getName(), criteria::andNameLike);
@@ -36,10 +37,6 @@ public class HeroService {
         Optional.ofNullable(param)
                 .filter(p -> !(p instanceof Collection) || !((Collection) p).isEmpty())
                 .ifPresent(consumer);
-    }
-
-    public List<Hero> findAll() {
-        return heroMapper.findAll();
     }
 
 }

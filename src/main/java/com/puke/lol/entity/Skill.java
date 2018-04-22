@@ -11,6 +11,8 @@ public class Skill {
 
     private Integer type;
 
+    private String tip;
+
     public Long getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class Skill {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip == null ? null : tip.trim();
     }
 }

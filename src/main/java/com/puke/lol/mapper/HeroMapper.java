@@ -4,7 +4,6 @@ import com.puke.lol.entity.Hero;
 import com.puke.lol.entity.HeroExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -31,8 +30,4 @@ public interface HeroMapper {
     int updateByPrimaryKeySelective(Hero record);
 
     int updateByPrimaryKey(Hero record);
-
-    @Select("select * from hero")
-    List<Hero> findAll();
-
 }

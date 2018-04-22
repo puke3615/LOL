@@ -59,6 +59,15 @@
             <!-- 驼峰 -->
             <property name="useActualColumnNames" value="true"/>
         </table>
+        <table tableName="skin" domainObjectName="Skin"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <!-- 驼峰 -->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
 
     </context>
 

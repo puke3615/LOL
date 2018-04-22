@@ -14,7 +14,7 @@ public class Example {
     private int start = 0;
     private int limit = Constant.LIMIT_MAX;
 
-    public Example(PageQuery query) {
+    public void setPageQuery(PageQuery query) {
         Optional.ofNullable(query)
                 .ifPresent(q -> {
                     setLimit(q.getLimit());

@@ -1,7 +1,6 @@
 package com.puke.lol.entity;
 
 import com.puke.lol.base.Example;
-import com.puke.lol.base.PageQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +13,6 @@ public class HeroExample extends Example {
     protected List<Criteria> oredCriteria;
 
     public HeroExample() {
-        this(null);
-    }
-
-    public HeroExample(PageQuery query) {
-        super(query);
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -309,6 +303,76 @@ public class HeroExample extends Example {
 
         public Criteria andNicknameNotBetween(String value1, String value2) {
             addCriterion("nickname not between", value1, value2, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameIsNull() {
+            addCriterion("englishName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameIsNotNull() {
+            addCriterion("englishName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameEqualTo(String value) {
+            addCriterion("englishName =", value, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameNotEqualTo(String value) {
+            addCriterion("englishName <>", value, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameGreaterThan(String value) {
+            addCriterion("englishName >", value, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameGreaterThanOrEqualTo(String value) {
+            addCriterion("englishName >=", value, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameLessThan(String value) {
+            addCriterion("englishName <", value, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameLessThanOrEqualTo(String value) {
+            addCriterion("englishName <=", value, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameLike(String value) {
+            addCriterion("englishName like", value, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameNotLike(String value) {
+            addCriterion("englishName not like", value, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameIn(List<String> values) {
+            addCriterion("englishName in", values, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameNotIn(List<String> values) {
+            addCriterion("englishName not in", values, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameBetween(String value1, String value2) {
+            addCriterion("englishName between", value1, value2, "englishName");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnglishNameNotBetween(String value1, String value2) {
+            addCriterion("englishName not between", value1, value2, "englishName");
             return (Criteria) this;
         }
 
@@ -659,6 +723,386 @@ public class HeroExample extends Example {
 
         public Criteria andSkillNotBetween(String value1, String value2) {
             addCriterion("skill not between", value1, value2, "skill");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackIsNull() {
+            addCriterion("attack is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackIsNotNull() {
+            addCriterion("attack is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackEqualTo(Integer value) {
+            addCriterion("attack =", value, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackNotEqualTo(Integer value) {
+            addCriterion("attack <>", value, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackGreaterThan(Integer value) {
+            addCriterion("attack >", value, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackGreaterThanOrEqualTo(Integer value) {
+            addCriterion("attack >=", value, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackLessThan(Integer value) {
+            addCriterion("attack <", value, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackLessThanOrEqualTo(Integer value) {
+            addCriterion("attack <=", value, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackIn(List<Integer> values) {
+            addCriterion("attack in", values, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackNotIn(List<Integer> values) {
+            addCriterion("attack not in", values, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackBetween(Integer value1, Integer value2) {
+            addCriterion("attack between", value1, value2, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttackNotBetween(Integer value1, Integer value2) {
+            addCriterion("attack not between", value1, value2, "attack");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicIsNull() {
+            addCriterion("magic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicIsNotNull() {
+            addCriterion("magic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicEqualTo(Integer value) {
+            addCriterion("magic =", value, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicNotEqualTo(Integer value) {
+            addCriterion("magic <>", value, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicGreaterThan(Integer value) {
+            addCriterion("magic >", value, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicGreaterThanOrEqualTo(Integer value) {
+            addCriterion("magic >=", value, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicLessThan(Integer value) {
+            addCriterion("magic <", value, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicLessThanOrEqualTo(Integer value) {
+            addCriterion("magic <=", value, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicIn(List<Integer> values) {
+            addCriterion("magic in", values, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicNotIn(List<Integer> values) {
+            addCriterion("magic not in", values, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicBetween(Integer value1, Integer value2) {
+            addCriterion("magic between", value1, value2, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andMagicNotBetween(Integer value1, Integer value2) {
+            addCriterion("magic not between", value1, value2, "magic");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseIsNull() {
+            addCriterion("defense is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseIsNotNull() {
+            addCriterion("defense is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseEqualTo(Integer value) {
+            addCriterion("defense =", value, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseNotEqualTo(Integer value) {
+            addCriterion("defense <>", value, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseGreaterThan(Integer value) {
+            addCriterion("defense >", value, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("defense >=", value, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseLessThan(Integer value) {
+            addCriterion("defense <", value, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseLessThanOrEqualTo(Integer value) {
+            addCriterion("defense <=", value, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseIn(List<Integer> values) {
+            addCriterion("defense in", values, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseNotIn(List<Integer> values) {
+            addCriterion("defense not in", values, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseBetween(Integer value1, Integer value2) {
+            addCriterion("defense between", value1, value2, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefenseNotBetween(Integer value1, Integer value2) {
+            addCriterion("defense not between", value1, value2, "defense");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyIsNull() {
+            addCriterion("difficulty is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyIsNotNull() {
+            addCriterion("difficulty is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyEqualTo(Integer value) {
+            addCriterion("difficulty =", value, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyNotEqualTo(Integer value) {
+            addCriterion("difficulty <>", value, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyGreaterThan(Integer value) {
+            addCriterion("difficulty >", value, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("difficulty >=", value, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyLessThan(Integer value) {
+            addCriterion("difficulty <", value, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyLessThanOrEqualTo(Integer value) {
+            addCriterion("difficulty <=", value, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyIn(List<Integer> values) {
+            addCriterion("difficulty in", values, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyNotIn(List<Integer> values) {
+            addCriterion("difficulty not in", values, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyBetween(Integer value1, Integer value2) {
+            addCriterion("difficulty between", value1, value2, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andDifficultyNotBetween(Integer value1, Integer value2) {
+            addCriterion("difficulty not between", value1, value2, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsIsNull() {
+            addCriterion("enemyTips is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsIsNotNull() {
+            addCriterion("enemyTips is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsEqualTo(String value) {
+            addCriterion("enemyTips =", value, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsNotEqualTo(String value) {
+            addCriterion("enemyTips <>", value, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsGreaterThan(String value) {
+            addCriterion("enemyTips >", value, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsGreaterThanOrEqualTo(String value) {
+            addCriterion("enemyTips >=", value, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsLessThan(String value) {
+            addCriterion("enemyTips <", value, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsLessThanOrEqualTo(String value) {
+            addCriterion("enemyTips <=", value, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsLike(String value) {
+            addCriterion("enemyTips like", value, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsNotLike(String value) {
+            addCriterion("enemyTips not like", value, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsIn(List<String> values) {
+            addCriterion("enemyTips in", values, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsNotIn(List<String> values) {
+            addCriterion("enemyTips not in", values, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsBetween(String value1, String value2) {
+            addCriterion("enemyTips between", value1, value2, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnemyTipsNotBetween(String value1, String value2) {
+            addCriterion("enemyTips not between", value1, value2, "enemyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsIsNull() {
+            addCriterion("allyTips is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsIsNotNull() {
+            addCriterion("allyTips is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsEqualTo(String value) {
+            addCriterion("allyTips =", value, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsNotEqualTo(String value) {
+            addCriterion("allyTips <>", value, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsGreaterThan(String value) {
+            addCriterion("allyTips >", value, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsGreaterThanOrEqualTo(String value) {
+            addCriterion("allyTips >=", value, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsLessThan(String value) {
+            addCriterion("allyTips <", value, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsLessThanOrEqualTo(String value) {
+            addCriterion("allyTips <=", value, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsLike(String value) {
+            addCriterion("allyTips like", value, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsNotLike(String value) {
+            addCriterion("allyTips not like", value, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsIn(List<String> values) {
+            addCriterion("allyTips in", values, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsNotIn(List<String> values) {
+            addCriterion("allyTips not in", values, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsBetween(String value1, String value2) {
+            addCriterion("allyTips between", value1, value2, "allyTips");
+            return (Criteria) this;
+        }
+
+        public Criteria andAllyTipsNotBetween(String value1, String value2) {
+            addCriterion("allyTips not between", value1, value2, "allyTips");
             return (Criteria) this;
         }
     }

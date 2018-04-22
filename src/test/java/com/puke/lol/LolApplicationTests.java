@@ -36,10 +36,4 @@ public class LolApplicationTests {
         System.out.println(list);
     }
 
-    @Test
-    public void contextLoads() {
-        List<Hero> heroes = heroMapper.findAll();
-        System.out.println(heroes);
-    }
-
 }

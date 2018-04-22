@@ -7,6 +7,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="tip" jdbcType="VARCHAR" property="tip" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, icon, name, description, type
+    id, icon, name, description, type, tip
   </sql>
   <select id="selectByExample" parameterType="com.puke.lol.entity.SkillExample" resultMap="BaseResultMap">
     select
@@ -100,13 +101,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.puke.lol.entity.Skill">
+  <insert id="insert" parameterType="com.puke.lol.entity.Skill" useGeneratedKeys="true" keyProperty="id">
     insert into skill (id, icon, name, 
-      description, type)
+      description, type, tip
+      )
     values (#{id,jdbcType=BIGINT}, #{icon,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{description,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER})
+      #{description,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{tip,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.puke.lol.entity.Skill">
+  <insert id="insertSelective" parameterType="com.puke.lol.entity.Skill" useGeneratedKeys="true" keyProperty="id">
     insert into skill
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -124,6 +127,9 @@
       <if test="type != null">
         type,
       </if>
+      <if test="tip != null">
+        tip,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -140,6 +146,9 @@
       </if>
       <if test="type != null">
         #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tip != null">
+        #{tip,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -167,6 +176,9 @@
       <if test="record.type != null">
         type = #{record.type,jdbcType=INTEGER},
       </if>
+      <if test="record.tip != null">
+        tip = #{record.tip,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -178,7 +190,8 @@
       icon = #{record.icon,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=INTEGER}
+      type = #{record.type,jdbcType=INTEGER},
+      tip = #{record.tip,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -198,6 +211,9 @@
       <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
+      <if test="tip != null">
+        tip = #{tip,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -206,7 +222,8 @@
     set icon = #{icon,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER}
+      type = #{type,jdbcType=INTEGER},
+      tip = #{tip,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,263 +1,377 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.puke.lol.mapper.HeroMapper">
-  <resultMap id="BaseResultMap" type="com.puke.lol.entity.Hero">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
-    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="background" jdbcType="VARCHAR" property="background" />
-    <result column="story" jdbcType="VARCHAR" property="story" />
-    <result column="skill" jdbcType="VARCHAR" property="skill" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.puke.lol.entity.Hero">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="englishName" jdbcType="VARCHAR" property="englishName"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="background" jdbcType="VARCHAR" property="background"/>
+        <result column="story" jdbcType="VARCHAR" property="story"/>
+        <result column="skill" jdbcType="VARCHAR" property="skill"/>
+        <result column="attack" jdbcType="INTEGER" property="attack"/>
+        <result column="magic" jdbcType="INTEGER" property="magic"/>
+        <result column="defense" jdbcType="INTEGER" property="defense"/>
+        <result column="difficulty" jdbcType="INTEGER" property="difficulty"/>
+        <result column="enemyTips" jdbcType="VARCHAR" property="enemyTips"/>
+        <result column="allyTips" jdbcType="VARCHAR" property="allyTips"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, name, nickname, englishName, avatar, type, background, story, skill, attack, 
+    magic, defense, difficulty, enemyTips, allyTips
+  </sql>
+    <select id="selectByExample" parameterType="com.puke.lol.entity.HeroExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    id, name, nickname, avatar, type, background, story, skill
-  </sql>
-  <select id="selectByExample" parameterType="com.puke.lol.entity.HeroExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from hero
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from hero
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
 
-    <if test="start >= 0 and limit > 0">
-      limit ${start}, ${limit}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from hero
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <if test="start >= 0 and limit > 0">
+            limit ${start}, ${limit}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from hero
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from hero
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.puke.lol.entity.HeroExample">
-    delete from hero
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.puke.lol.entity.Hero">
+    <delete id="deleteByExample" parameterType="com.puke.lol.entity.HeroExample">
+        delete from hero
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.puke.lol.entity.Hero" useGeneratedKeys="true" keyProperty="id">
     insert into hero (id, name, nickname, 
-      avatar, type, background, 
-      story, skill)
+      englishName, avatar, type, 
+      background, story, skill, 
+      attack, magic, defense, 
+      difficulty, enemyTips, allyTips
+      )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
-      #{avatar,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{background,jdbcType=VARCHAR}, 
-      #{story,jdbcType=VARCHAR}, #{skill,jdbcType=VARCHAR})
+      #{englishName,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{background,jdbcType=VARCHAR}, #{story,jdbcType=VARCHAR}, #{skill,jdbcType=VARCHAR}, 
+      #{attack,jdbcType=INTEGER}, #{magic,jdbcType=INTEGER}, #{defense,jdbcType=INTEGER}, 
+      #{difficulty,jdbcType=INTEGER}, #{enemyTips,jdbcType=VARCHAR}, #{allyTips,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.puke.lol.entity.Hero">
-    insert into hero
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="nickname != null">
-        nickname,
-      </if>
-      <if test="avatar != null">
-        avatar,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="background != null">
-        background,
-      </if>
-      <if test="story != null">
-        story,
-      </if>
-      <if test="skill != null">
-        skill,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="nickname != null">
-        #{nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="avatar != null">
-        #{avatar,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=VARCHAR},
-      </if>
-      <if test="background != null">
-        #{background,jdbcType=VARCHAR},
-      </if>
-      <if test="story != null">
-        #{story,jdbcType=VARCHAR},
-      </if>
-      <if test="skill != null">
-        #{skill,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.puke.lol.entity.HeroExample" resultType="java.lang.Long">
-    select count(*) from hero
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update hero
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
-      </if>
-      <if test="record.name != null">
+    <insert id="insertSelective" parameterType="com.puke.lol.entity.Hero" useGeneratedKeys="true" keyProperty="id">
+        insert into hero
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="englishName != null">
+                englishName,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="background != null">
+                background,
+            </if>
+            <if test="story != null">
+                story,
+            </if>
+            <if test="skill != null">
+                skill,
+            </if>
+            <if test="attack != null">
+                attack,
+            </if>
+            <if test="magic != null">
+                magic,
+            </if>
+            <if test="defense != null">
+                defense,
+            </if>
+            <if test="difficulty != null">
+                difficulty,
+            </if>
+            <if test="enemyTips != null">
+                enemyTips,
+            </if>
+            <if test="allyTips != null">
+                allyTips,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="englishName != null">
+                #{englishName,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="background != null">
+                #{background,jdbcType=VARCHAR},
+            </if>
+            <if test="story != null">
+                #{story,jdbcType=VARCHAR},
+            </if>
+            <if test="skill != null">
+                #{skill,jdbcType=VARCHAR},
+            </if>
+            <if test="attack != null">
+                #{attack,jdbcType=INTEGER},
+            </if>
+            <if test="magic != null">
+                #{magic,jdbcType=INTEGER},
+            </if>
+            <if test="defense != null">
+                #{defense,jdbcType=INTEGER},
+            </if>
+            <if test="difficulty != null">
+                #{difficulty,jdbcType=INTEGER},
+            </if>
+            <if test="enemyTips != null">
+                #{enemyTips,jdbcType=VARCHAR},
+            </if>
+            <if test="allyTips != null">
+                #{allyTips,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.puke.lol.entity.HeroExample" resultType="java.lang.Long">
+        select count(*) from hero
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update hero
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.name != null">
+                name = #{record.name,jdbcType=VARCHAR},
+            </if>
+            <if test="record.nickname != null">
+                nickname = #{record.nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.englishName != null">
+                englishName = #{record.englishName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.avatar != null">
+                avatar = #{record.avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="record.type != null">
+                type = #{record.type,jdbcType=VARCHAR},
+            </if>
+            <if test="record.background != null">
+                background = #{record.background,jdbcType=VARCHAR},
+            </if>
+            <if test="record.story != null">
+                story = #{record.story,jdbcType=VARCHAR},
+            </if>
+            <if test="record.skill != null">
+                skill = #{record.skill,jdbcType=VARCHAR},
+            </if>
+            <if test="record.attack != null">
+                attack = #{record.attack,jdbcType=INTEGER},
+            </if>
+            <if test="record.magic != null">
+                magic = #{record.magic,jdbcType=INTEGER},
+            </if>
+            <if test="record.defense != null">
+                defense = #{record.defense,jdbcType=INTEGER},
+            </if>
+            <if test="record.difficulty != null">
+                difficulty = #{record.difficulty,jdbcType=INTEGER},
+            </if>
+            <if test="record.enemyTips != null">
+                enemyTips = #{record.enemyTips,jdbcType=VARCHAR},
+            </if>
+            <if test="record.allyTips != null">
+                allyTips = #{record.allyTips,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update hero
+        set id = #{record.id,jdbcType=BIGINT},
         name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.nickname != null">
         nickname = #{record.nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.avatar != null">
+        englishName = #{record.englishName,jdbcType=VARCHAR},
         avatar = #{record.avatar,jdbcType=VARCHAR},
-      </if>
-      <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
-      </if>
-      <if test="record.background != null">
         background = #{record.background,jdbcType=VARCHAR},
-      </if>
-      <if test="record.story != null">
         story = #{record.story,jdbcType=VARCHAR},
-      </if>
-      <if test="record.skill != null">
         skill = #{record.skill,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update hero
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      nickname = #{record.nickname,jdbcType=VARCHAR},
-      avatar = #{record.avatar,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=VARCHAR},
-      background = #{record.background,jdbcType=VARCHAR},
-      story = #{record.story,jdbcType=VARCHAR},
-      skill = #{record.skill,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.puke.lol.entity.Hero">
-    update hero
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="nickname != null">
-        nickname = #{nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="avatar != null">
-        avatar = #{avatar,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
-      </if>
-      <if test="background != null">
-        background = #{background,jdbcType=VARCHAR},
-      </if>
-      <if test="story != null">
-        story = #{story,jdbcType=VARCHAR},
-      </if>
-      <if test="skill != null">
-        skill = #{skill,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.puke.lol.entity.Hero">
+        attack = #{record.attack,jdbcType=INTEGER},
+        magic = #{record.magic,jdbcType=INTEGER},
+        defense = #{record.defense,jdbcType=INTEGER},
+        difficulty = #{record.difficulty,jdbcType=INTEGER},
+        enemyTips = #{record.enemyTips,jdbcType=VARCHAR},
+        allyTips = #{record.allyTips,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.puke.lol.entity.Hero">
+        update hero
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="englishName != null">
+                englishName = #{englishName,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="background != null">
+                background = #{background,jdbcType=VARCHAR},
+            </if>
+            <if test="story != null">
+                story = #{story,jdbcType=VARCHAR},
+            </if>
+            <if test="skill != null">
+                skill = #{skill,jdbcType=VARCHAR},
+            </if>
+            <if test="attack != null">
+                attack = #{attack,jdbcType=INTEGER},
+            </if>
+            <if test="magic != null">
+                magic = #{magic,jdbcType=INTEGER},
+            </if>
+            <if test="defense != null">
+                defense = #{defense,jdbcType=INTEGER},
+            </if>
+            <if test="difficulty != null">
+                difficulty = #{difficulty,jdbcType=INTEGER},
+            </if>
+            <if test="enemyTips != null">
+                enemyTips = #{enemyTips,jdbcType=VARCHAR},
+            </if>
+            <if test="allyTips != null">
+                allyTips = #{allyTips,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.puke.lol.entity.Hero">
     update hero
     set name = #{name,jdbcType=VARCHAR},
       nickname = #{nickname,jdbcType=VARCHAR},
+      englishName = #{englishName,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
       background = #{background,jdbcType=VARCHAR},
       story = #{story,jdbcType=VARCHAR},
-      skill = #{skill,jdbcType=VARCHAR}
+      skill = #{skill,jdbcType=VARCHAR},
+      attack = #{attack,jdbcType=INTEGER},
+      magic = #{magic,jdbcType=INTEGER},
+      defense = #{defense,jdbcType=INTEGER},
+      difficulty = #{difficulty,jdbcType=INTEGER},
+      enemyTips = #{enemyTips,jdbcType=VARCHAR},
+      allyTips = #{allyTips,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

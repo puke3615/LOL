@@ -1,11 +1,16 @@
 package com.puke.lol.entity;
 
+import lombok.Data;
+
+@Data
 public class Hero {
     private Long id;
 
     private String name;
 
     private String nickname;
+
+    private String englishName;
 
     private String avatar;
 
@@ -16,6 +21,18 @@ public class Hero {
     private String story;
 
     private String skill;
+
+    private Integer attack;
+
+    private Integer magic;
+
+    private Integer defense;
+
+    private Integer difficulty;
+
+    private String enemyTips;
+
+    private String allyTips;
 
     public Long getId() {
         return id;
@@ -39,6 +56,14 @@ public class Hero {
 
     public void setNickname(String nickname) {
         this.nickname = nickname == null ? null : nickname.trim();
+    }
+
+    public String getEnglishName() {
+        return englishName;
+    }
+
+    public void setEnglishName(String englishName) {
+        this.englishName = englishName == null ? null : englishName.trim();
     }
 
     public String getAvatar() {
@@ -79,5 +104,53 @@ public class Hero {
 
     public void setSkill(String skill) {
         this.skill = skill == null ? null : skill.trim();
+    }
+
+    public Integer getAttack() {
+        return attack;
+    }
+
+    public void setAttack(Integer attack) {
+        this.attack = attack;
+    }
+
+    public Integer getMagic() {
+        return magic;
+    }
+
+    public void setMagic(Integer magic) {
+        this.magic = magic;
+    }
+
+    public Integer getDefense() {
+        return defense;
+    }
+
+    public void setDefense(Integer defense) {
+        this.defense = defense;
+    }
+
+    public Integer getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Integer difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public String getEnemyTips() {
+        return enemyTips;
+    }
+
+    public void setEnemyTips(String enemyTips) {
+        this.enemyTips = enemyTips == null ? null : enemyTips.trim();
+    }
+
+    public String getAllyTips() {
+        return allyTips;
+    }
+
+    public void setAllyTips(String allyTips) {
+        this.allyTips = allyTips == null ? null : allyTips.trim();
     }
 }
