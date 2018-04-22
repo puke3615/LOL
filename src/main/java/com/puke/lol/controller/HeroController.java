@@ -1,5 +1,6 @@
 package com.puke.lol.controller;
 
+import com.puke.lol.aop.AutoCatchException;
 import com.puke.lol.base.PageResult;
 import com.puke.lol.base.Result;
 import com.puke.lol.entity.Hero;
@@ -19,6 +20,7 @@ import java.util.Optional;
  * @version 18/4/21
  */
 @RestController
+@AutoCatchException
 @RequestMapping("/hero")
 public class HeroController {
 
@@ -38,6 +40,12 @@ public class HeroController {
         return Optional.ofNullable(heroVo)
                 .map(Result::success)
                 .orElse(Result.error("未查到该条数据~"));
+    }
+
+    @RequestMapping("/addHero")
+    public Result<Void> addHero(Hero hero) {
+        heroService.addHero(hero);
+        return Result.success();
     }
 
     @RequestMapping("/updateHeroById")

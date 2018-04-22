@@ -46,6 +46,10 @@ public class HeroService {
                 .orElse(null);
     }
 
+    public void addHero(Hero hero) {
+        heroMapper.insertSelective(hero);
+    }
+
     public void updateByExampleSelective(Hero hero) {
         HeroExample example = getHeroExampleById(hero.getId());
         heroMapper.updateByExampleSelective(hero, example);
